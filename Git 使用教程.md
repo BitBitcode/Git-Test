@@ -154,17 +154,18 @@ $ ssh-keygen -t rsa -C "smilewwc@qq.com"
 + Gitee：右上角用户头像 -> 菜单“修改资料”，然后选择“SSH公钥”，填写一个便于识别的标题，然后把用户主目录下的.ssh/id_rsa.pub文件的内容粘贴进去；
 
 #### 3.1.3.2 将本地仓库链接到远程仓库
-在Git Bash中输入以下代码：
+在Git Bash中输入 `git remote add origin 仓库URL.git`：
 ```bash
 $ git remote add origin https://github.com/Bitbitcode/Git-Test.git
 ```
 
-如果遇到以下提示：
+**【报错解决】**如果遇到以下提示：
+
 ```bash
 fatal: refusing to merge unrelated histories
 ```
 
-这是因为系统认为这是两个根本不相干的git库，（一个是本地库，一个是远端库），然后本地要去推送到远端，远端觉得这个本地库跟自己不相干，所以告知无法合并。解决方法：
+这是因为远程Git服务器认为这是两个根本不相干的仓库，（一个是本地库，一个是远端库），然后本地要去推送到远端，远端觉得这个本地库跟自己不相干，所以告知无法合并。解决方法：
 + 如果这不是新的仓库（即这个仓库以前创建过），那么推荐使用克隆的方法：从远端库拉下来代码，本地要加入的代码放到远端库下载到本地的库，然后提交上去，因为这样的话，你基于的库就是远端的库，这是一次update了（有关克隆仓库的详细内容将在下一节讲解）；
 + 如果这是新建的仓库，那么使用强制的方法:
   ```bash
@@ -190,6 +191,27 @@ remote: Total 19 (delta 7), reused 0 (delta 0), pack-reused 0
 Unpacking objects: 100% (19/19), 7.01 KiB | 64.00 KiB/s, done.
 ```
 
+**【报错解决】**如果出现以下提示：
+
+```bash
+WWC@Surface MINGW64 /c/github
+$ git push origin master
+fatal: not a git repository (or any of the parent directories): .git
+```
+
+提示的意思是“这不是一个Git仓库”，注意观察此时第一行的路径并不是仓库的路径，我们之前的操作在路径“C:/Github”下，还没有进入到仓库的路径下，所以还需要导航到该仓库的目录下：
+
+```bash
+WWC@Surface MINGW64 /c/github
+$ cd Git-Test
+
+WWC@Surface MINGW64 /c/github/Git-test (master)
+$
+```
+
+这时在路径后显示了“(master)”，表明目前位于主分支。
+
+至此我们就完成了仓库的克隆工作，之后的工作不需要再次进行上述操作，只需要普通的pull、push操作即可。
 
 ## 3.3 链接多个远程仓库
 
@@ -198,15 +220,27 @@ Unpacking objects: 100% (19/19), 7.01 KiB | 64.00 KiB/s, done.
 1、在仓库目录下查看当前链接的远程仓库
 ```bash
 $ git remote -v
-这里添加显示的内容
 ```
 
+命令行显示：
+
+```bash
+origin  https://gitee.com/Acrylic-Studio/Git-Test (fetch)
+origin  https://gitee.com/Acrylic-Studio/Git-Test (push)
+```
+
+也就是说，我们平时输入的指令`$ git push origin master `中的“origin”只是一个默认名词而已，其具体地址取决于你克隆或首次链接时候的仓库URL。
+
 2、删除已链接的远程仓库
+
 ```bash
 $ git remote remove origin
 ```
 
-3、添加新的远程仓库
+该命令也可以简写为：`$ git remote rm origin`
+
+3、添加新的远程仓库：`$ git remote add 远程服务器名称（可以自定义）`
+
 ```bash
 $ git remote add Gitee git@gitee.com:Acrylic-Studio/Git-Test.git
 $ git remote add Github git@github.com:Bitbitcode/Git-Test.git
@@ -220,8 +254,10 @@ Github  git@github.com:Bitbitcode/Git-Test.git (fetch)
 Github  git@github.com:Bitbitcode/Git-Test.git (push)
 ```
 
+此后，将指令改为：`$ git push Github master `，`$ git push Gitee master `即可。
 
 # 第4章 代码的拉取与提交
+
 ## 4.1 拉取已有的远程代码
 
 
@@ -236,7 +272,7 @@ $ git push origin master
 
 
 
-【注意】如果提交代码时遇到以下提示：
+**【报错解决】**如果提交代码时遇到以下提示：
 
 ```
 $ git push origin master
