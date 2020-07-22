@@ -175,12 +175,24 @@ fatal: refusing to merge unrelated histories
 至此我们就完成了新仓库的创建工作，之后的工作不需要再次进行上述操作，只需要普通的pull、push操作即可。
 
 ## 3.2 克隆已有仓库
-先导航到克隆的位置，然后在Git Bash输入：
+在Git Bash中，先导航到克隆的位置，然后输入 `git clone 仓库的URL`：
 ```bash
+$ cd C:/Github
 $ git clone https://gitee.com/Acrylic-Studio/Git-Test
 ```
+命令行将显示：
+```bash
+Cloning into 'Git-Test'...
+remote: Enumerating objects: 19, done.
+remote: Counting objects: 100% (19/19), done.
+remote: Compressing objects: 100% (18/18), done.
+remote: Total 19 (delta 7), reused 0 (delta 0), pack-reused 0
+Unpacking objects: 100% (19/19), 7.01 KiB | 64.00 KiB/s, done.
+```
+
 
 ## 3.3 链接多个远程仓库
+
 最常见的操作是将一个仓库同时链接到Github和Gitee
 
 1、在仓库目录下查看当前链接的远程仓库
@@ -202,8 +214,8 @@ $ git remote add Github git@github.com:Bitbitcode/Git-Test.git
 这时查看远程仓库信息：
 ```bash
 $ git remote -v
-Gitee   git@gitee.com:/Acrylic-Studio/Git-Test.git (fetch)
-Gitee   git@gitee.com:/Acrylic-Studio/Git-Test.git (push)
+Gitee   git@gitee.com:Acrylic-Studio/Git-Test.git (fetch)
+Gitee   git@gitee.com:Acrylic-Studio/Git-Test.git (push)
 Github  git@github.com:Bitbitcode/Git-Test.git (fetch)
 Github  git@github.com:Bitbitcode/Git-Test.git (push)
 ```
@@ -221,3 +233,19 @@ $ git commit -m "本次提交的描述"
 $ git push origin master 
 ```
 注意，如果你设置了多个远程仓库，那么这里的 “`$ git push origin master`” 应改为 “`$ git push 远程仓库名称 master`”
+
+
+
+【注意】如果提交代码时遇到以下提示：
+
+```
+$ git push origin master
+remote: Kiana_Kaslana: Incorrect username or password (access token)
+```
+则说明在首次提示填写用户名和密码时填写错误，这里需要区别“用户名”和“昵称”：用户名实际上是网站中你的域名，而不是设置页的昵称，所以如果填错，远程Git服务器将不能识别（毕竟域名错了），这时需要在控制面板中删除原先的凭据：
+1. 打开控制面板；
+2. 点击用户账户；
+3. 点击凭据管理器；
+4. 选择“Windows凭据”选项卡；
+5. 找到并删除该远程Git服务器的凭据；
+6. 重新push提交代码，会弹出输入用户名和密码的对话框，输入正确的用户名和密码即可。
