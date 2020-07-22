@@ -140,6 +140,21 @@ Initialized empty Git repository in C:/Github/Git-Test/.git/
 
 ### 3.1.3 链接到远程仓库
 #### 3.1.3.1 获取并添加SSH密钥
+
+如果出现以下提示：
+
+```
+$ git clone https:/github.com/Bitbitcode/Git-Test
+Cloning into 'Git-Test'...
+
+？填写显示的报错内容？
+
+Please make sure you have the correct access rights
+and the repository exists.
+```
+
+则需要添加SSH密钥。
+
 1、检查是否已经存在SSH密钥：在用户目录（C:/Users/WWC）下，查看是否存在“.ssh”文件夹，如果存在，此文件夹内是否存在“id_rsa”和“id_rsa.pub”两个文件，如果已经存在，则跳过第二步。注意：“id_rsa”是私钥，必须保密，“id_rsa.pub”是公钥，无需保密；
 
 2、创建一个SSH密钥：在Git Bash中输入以下代码，
