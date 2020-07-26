@@ -275,6 +275,42 @@ Github  git@github.com:Bitbitcode/Git-Test.git (push)
 
 ## 4.1 拉取已有的远程代码
 
+语法：```$ git fetch [远程源名称] [分支名称]```
+
+如果没有更改过远程仓库的服务器地址和名称，那么就直接使用以下命令：
+
+```bash
+$ git fetch origin master
+```
+
+如果更改了远程仓库的服务器地址和名称，如上一章中连接到两个远程仓库，则需要使用更改时设置的远程Git服务器名称（注意，此处对大小写敏感），例如：
+
+```bash
+WWC@Surface MINGW64 /c/github/git-test (master)
+$ git fetch Gitee master
+From gitee.com:Acrylic-Studio/Git-Test
+ * branch            master     -> FETCH_HEAD
+ * [new branch]      master     -> Gitee/master
+ 
+WWC@Surface MINGW64 /c/github/git-test (master)
+$ git fetch Github master
+Warning: Permanently added the RSA host key for IP address '52.74.223.119' to the list of known hosts.
+From github.com:BitBitcode/Git-Test
+ * branch            master     -> FETCH_HEAD
+ * [new branch]      master     -> Github/master
+```
+
+
+
+语法：```$ git pull [远程源名称] [分支名称]```
+
+```bash
+$ git pull origin master
+```
+
+
+
+
 
 
 ## 4.2 提交更改
@@ -300,3 +336,27 @@ remote: Kiana_Kaslana: Incorrect username or password (access token)
 4. 选择“Windows凭据”选项卡；
 5. 找到并删除该远程Git服务器的凭据；
 6. 重新push提交代码，会弹出输入用户名和密码的对话框，输入正确的用户名和密码即可。
+
+
+
+
+
+## 4.X 添加标签
+
+
+
+
+# 第5章 分支管理
+
+
+
+# 第6章 Git高级用法
+
+## 6.1 忽略不需要的文件
+
+## 6.2 配置别名
+
+## 6.3 搭建Git服务器
+
+
+
