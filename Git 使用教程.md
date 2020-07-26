@@ -206,7 +206,9 @@ remote: Total 19 (delta 7), reused 0 (delta 0), pack-reused 0
 Unpacking objects: 100% (19/19), 7.01 KiB | 64.00 KiB/s, done.
 ```
 
-**【报错解决】**如果出现以下提示：
+**【报错解决】**
+
+如果出现以下提示：
 
 ```bash
 WWC@Surface MINGW64 /c/github
@@ -232,7 +234,8 @@ $
 
 最常见的操作是将一个仓库同时链接到Github和Gitee
 
-1、在仓库目录下查看当前链接的远程仓库
+**1、在仓库目录下查看当前链接的远程仓库**
+
 ```bash
 $ git remote -v
 ```
@@ -244,9 +247,9 @@ origin  https://gitee.com/Acrylic-Studio/Git-Test (fetch)
 origin  https://gitee.com/Acrylic-Studio/Git-Test (push)
 ```
 
-也就是说，我们平时输入的指令`$ git push origin master `中的“origin”只是一个默认名词而已，其具体地址取决于你克隆或首次链接时候的仓库URL。
+也就是说，我们平时输入的命令`$ git push origin master`中的 “origin” 只是一个默认名称而已，其具体地址取决于你克隆或首次链接时候的仓库URL。
 
-2、删除已链接的远程仓库
+**2、删除已链接的远程仓库**
 
 ```bash
 $ git remote remove origin
@@ -254,19 +257,30 @@ $ git remote remove origin
 
 该命令也可以简写为：`$ git remote rm origin`
 
-3、添加新的远程仓库：`$ git remote add 远程服务器名称（可以自定义）`
+**3、添加新的远程仓库**
+
+语法：`$ git remote add [远程服务器名称] git@[远程服务器域名]:[用户域名/仓库名称].git`
 
 ```bash
 $ git remote add Gitee git@gitee.com:Acrylic-Studio/Git-Test.git
 $ git remote add Github git@github.com:Bitbitcode/Git-Test.git
 ```
-这时查看远程仓库信息：
+这时再次查看远程仓库信息，发现已经添加了两个远程服务器：
 ```bash
 $ git remote -v
 Gitee   git@gitee.com:Acrylic-Studio/Git-Test.git (fetch)
 Gitee   git@gitee.com:Acrylic-Studio/Git-Test.git (push)
 Github  git@github.com:Bitbitcode/Git-Test.git (fetch)
 Github  git@github.com:Bitbitcode/Git-Test.git (push)
+```
+
+也可以不加 “-v” 查看简略信息，这时候不显示远程仓库的地址：
+
+```bash
+WWC@Surface MINGW64 /c/github/git-test (master)
+$ git remote
+Gitee
+Github
 ```
 
 此后，将指令改为：`$ git push Github master `，`$ git push Gitee master `即可。
