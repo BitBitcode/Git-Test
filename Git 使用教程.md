@@ -1,6 +1,8 @@
 # 第1章 了解Git
 参考廖雪峰网站教程：https://www.liaoxuefeng.com/wiki/896043488029600/896067008724000
 
+官方文档：C:\Program Files\Git\mingw64\share\doc\git-doc
+
 ## 1.1 Git的简介
 
 ## 1.2 集中式与分布式版本控制系统
@@ -143,7 +145,7 @@ Initialized empty Git repository in C:/Github/Git-Test/.git/
 
 如果出现以下提示：
 
-```
+```bash
 $ git clone https:/github.com/Bitbitcode/Git-Test
 Cloning into 'Git-Test'...
 
@@ -339,7 +341,7 @@ $ git push origin master
 
 **【报错解决】**如果提交代码时遇到以下提示：
 
-```
+```bash
 $ git push origin master
 remote: Kiana_Kaslana: Incorrect username or password (access token)
 ```
@@ -359,14 +361,29 @@ remote: Kiana_Kaslana: Incorrect username or password (access token)
 
 
 
-
 # 第5章 分支管理
 
+![Git Flow 示意图](C:\Github\Git-Test\images\Git Flow.png)
 
+其中：
+
++ **master分支**：最为稳定，功能比较完整，随时可发布的代码；
++ **develop分支**：用于平时开发的主分支，并一直存在，永远是功能最新最全的分支，包含所有要发布到下一个 release 的代码，主要用于合并其他分支；
++ **feature分支**：用于开发新的功能的分支，一旦开发完成，通过测试，合并回 develop 分支进入下一个 release；
++ **release分支**：用于发布准备的专门分支；
++ **hotfix分支**：用于修复线上代码的 bug。
+
+说明： 
+
++ 所有开发分支从 develop 分支拉；
++ 所有 hotfix 分支从 master 拉；
++ 所有在 master 上的提交都必要要有 tag，方便回滚；
++ 只要有合并到 master 分支的操作，都需要和 develop 分支合并下，保证同步；
++ master 和 develop 分支是主要分支，主要分支每种类型只能有一个，派生分支每个类型可以同时存在多个。
 
 # 第6章 Git高级用法
 
-## 6.1 忽略不需要的文件
+## 6.1 忽略不需同步的文件
 
 ## 6.2 配置别名
 
