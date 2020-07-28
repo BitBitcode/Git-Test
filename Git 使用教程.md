@@ -173,7 +173,7 @@ $ ssh-keygen -t rsa -C "smilewwc@qq.com"
 + Gitee：右上角用户头像 -> 菜单“修改资料”，然后选择“SSH公钥”，填写一个便于识别的标题，然后把用户主目录下的.ssh/id_rsa.pub文件的内容粘贴进去；
 
 #### 3.1.3.2 将本地仓库链接到远程仓库
-在Git Bash中输入 `git remote add origin 仓库URL.git`：
+【语法】 `git remote add origin 仓库URL.git`：
 ```bash
 $ git remote add origin https://github.com/Bitbitcode/Git-Test.git
 ```
@@ -263,7 +263,7 @@ $ git remote remove origin
 
 **3、添加新的远程仓库**
 
-语法：`$ git remote add [远程服务器名称] git@[远程服务器域名]:[用户域名/仓库名称].git`
+【语法】`$ git remote add [远程服务器名称] git@[远程服务器域名]:[用户域名/仓库名称].git`
 
 ```bash
 $ git remote add Gitee git@gitee.com:Acrylic-Studio/Git-Test.git
@@ -293,7 +293,7 @@ Github
 
 ## 4.1 拉取已有的远程代码
 
-语法：```$ git fetch [远程源名称] [分支名称]```
+【语法】```$ git fetch [远程源名称] [分支名称]```
 
 如果没有更改过远程仓库的服务器地址和名称，那么就直接使用以下命令：
 
@@ -320,7 +320,7 @@ From github.com:BitBitcode/Git-Test
 
 
 
-语法：```$ git pull [远程源名称] [分支名称]```
+【语法】```$ git pull [远程源名称] [分支名称]```
 
 ```bash
 $ git pull origin master
@@ -343,7 +343,7 @@ $ git push origin master
 
 1、普通提交
 
-语法：```$ git commit -m "massage"```
+【语法】```$ git commit -m "massage"```
 
 ```bash
 $ git commit -m '
@@ -355,15 +355,17 @@ $ git commit -m '
 
 2、添加并提交
 
-语法：```$ git commit -a -m "massage"```
+【语法】```$ git commit -a -m "massage"```
 
 3、追加提交
 
-语法：```$ git commit --amend```
+【语法】```$ git commit --amend```
 
 X、查看帮助
 
-语法：```$ git commit --help```
+【语法】```$ git commit --help```
+
+此命令将打开官方帮助文档，帮助文件的路径为：？？？
 
 
 
@@ -391,9 +393,9 @@ remote: Kiana_Kaslana: Incorrect username or password (access token)
 
 ### 4.3.1 当前仓库的状况
 
-语法：```$ git status```
+【语法】```$ git status```
 
-命令行将返回当前仓库的情况，包括未提交的信息和未添加的信息：
+命令行将返回当前仓库的情况，包括未添加（add）的信息和未提交（commit）的信息：
 
 ```bash
 WWC@Surface MINGW64 /c/github/Git-Test (master)
@@ -409,11 +411,18 @@ Changes not staged for commit:
         modified:   "Git \344\275\277\347\224\250\346\225\231\347\250\213.md"
 ```
 
+如果所有更改已提交、上传，将显示：
 
+```bash
+WWC@Surface MINGW64 /c/github/Git-Test (master)
+$ git status
+On branch master
+nothing to commit, working tree clean
+```
 
 ### 4.3.2 某个文件的具体更改
 
-语法：```$ git diff Sample.c```
+【语法】```$ git diff Sample.c```
 
 命令行将显示该文档的改动：
 
@@ -442,11 +451,74 @@ index 51496ea..5a44467 100644
 
 ### 4.3.3 查看该仓库的所有记录
 
-语法：```$ git log```
+【语法】```$ git log```
 
+命令行将显示部分信息（由于窗口大小的限制），按下回车键会继续显示，直到最开始的记录。也就是说，先显示较新的记录，后显示较旧的记录：
 
+```bash
+WWC@Surface MINGW64 /c/github/Git-Test (master)
+$ git log
+commit 01bdddc831feea7452f633525b2652074c05fece (HEAD -> master, Gitee/master)
+Author: Acrylic-Studio <smilewwc@qq.com>
+Date:   Tue Jul 28 14:34:54 2020 +0800
 
+    continue writting the learning note
 
+commit b64cef89e700cadb21ba61d932407ea5806bcaa3
+Author: Acrylic-Studio <smilewwc@qq.com>
+Date:   Sun Jul 26 13:36:06 2020 +0800
+
+    add a sample file
+
+commit 2b034c7dc316de514e58917140aa3654e79a035e
+Author: Acrylic-Studio <smilewwc@qq.com>
+Date:   Tue Jul 21 23:47:33 2020 +0800
+
+    delete
+
+commit b911c37b3abf10ffcf4a19c1da60851bf37a39d3
+Merge: af724fa 3a4b643
+Author: Acrylic-Studio <smilewwc@qq.com>
+Date:   Tue Jul 21 23:45:48 2020 +0800
+
+    Merge branch 'master' of gitee.com:Acrylic-Studio/Git-Test
+
+commit af724fa5a7f8f44de1ccca5252e3466a092fa949
+Author: Acrylic-Studio <smilewwc@qq.com>
+Date:   Tue Jul 21 23:34:01 2020 +0800
+
+    Add files
+
+commit 3a4b64322ea791961ce9d07d9b0a8a255aa1e1ec
+Author: Kiana_Kaslana <smilewwc@qq.com>
+Date:   Tue Jul 21 23:22:36 2020 +0800
+
+    Initial commit
+(END)
+```
+
+当命令行显示”(END)“时，表明所有记录已显示。但此时我们会发现无法输入命令，按回车键也没有任何反应，此时只需按下字母”q“键即可恢复到输入命令的状态：
+
+```bash
+... ...
+
+commit af724fa5a7f8f44de1ccca5252e3466a092fa949
+Author: Acrylic-Studio <smilewwc@qq.com>
+Date:   Tue Jul 21 23:34:01 2020 +0800
+
+    Add files
+
+commit 3a4b64322ea791961ce9d07d9b0a8a255aa1e1ec
+Author: Kiana_Kaslana <smilewwc@qq.com>
+Date:   Tue Jul 21 23:22:36 2020 +0800
+
+    Initial commit
+
+（此处按下了“q”）
+
+WWC@Surface MINGW64 /c/github/Git-Test (master)
+$
+```
 
 ## 4.X 添加标签
 
