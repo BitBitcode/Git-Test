@@ -318,34 +318,53 @@ From github.com:BitBitcode/Git-Test
  * [new branch]      master     -> Github/master
 ```
 
-
-
 【语法】```$ git pull [远程源名称] [分支名称]```
 
 ```bash
 $ git pull origin master
 ```
 
+## 4.2 提交更改并上传至远程仓库
 
-
-
-
-## 4.2 提交更改
-
-### 常规提交流程
-
-首先要将文件添加（add）到仓库中，只有添加之后的文件才会被Git监控，否则的话即使文件保存在仓库文件夹下（包括子文件夹），也不会被提交（commit）或上传（push）；
-
+### 4.2.1 常规提交流程
+一次完整的提交操作为：
 ```bash
 $ git add .
 $ git commit -m "本次提交的描述"
 $ git push origin master 
 ```
-注意，如果你设置了多个远程仓库，那么这里的 “`$ git push origin master`” 应改为 “`$ git push 远程仓库名称 master`”
 
-### 提交（commit）命令
+#### 1、添加文件
+【语法】```$ git add [文件路径]/[文件名称]```
+首先要将文件添加（add）到仓库中，只有添加之后的文件才会被Git监控，否则的话即使文件保存在仓库文件夹下（包括子文件夹），也不会被提交（commit）或上传（push），例如“Sample_File.txt”还未被添加到仓库中，仓库将显示“Untracked files”：
 
-1、普通提交
+```bash
+WWC@Surface MINGW64 /c/Github/Git-Test (master)
+$ git status
+On branch master
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+        modified:   Git_Learning.md
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        Sample_File.txt
+```
+【注意】```$ git status```命令用于查看当前仓库的状态，将在 “4.3.1 当前仓库的状况” 中详细学习。
+
+#### 2、提交更改
+【语法】```$ git commit -m "本次提交的概述"```
+提交和添加的区别在于，提交（commit）将被记录在仓库的日志中，而添加（add）只是将文件或更改添加到当前的仓库中，不会被记录了下来。在实际工作中，可以多次添加，然后统一提交。
+【注意】提交命令还有很多不同的用法，将在下一节中学习
+
+#### 3、推送到远程仓库
+【语法】```$ git push [远程服务器名称] [需要提交的分支]```
+对于默认的远程服务器和分支，一般的命令为：```$ git commit origin master```
+【注意】如果你设置了多个远程仓库，应改为：```$ git push [远程仓库名称] master```
+
+### 4.2.2 提交（commit）命令
+
+#### 1、普通提交
 
 【语法】```$ git commit -m "massage"```
 
@@ -357,15 +376,15 @@ $ git commit -m '
 	'
 ```
 
-2、添加并提交
+#### 2、添加并提交
 
 【语法】```$ git commit -a -m "massage"```
 
-3、追加提交
+#### 3、追加提交
 
 【语法】```$ git commit --amend```
 
-X、查看帮助
+#### X、查看帮助
 
 【语法】```$ git commit --help```
 
@@ -389,7 +408,7 @@ remote: Kiana_Kaslana: Incorrect username or password (access token)
 
 删除后再次执行提交操作，按照提示重新输入正确的用户名和密码即可。
 
-## 4.3 查看更改
+## 4.3 查看仓库情况与文件更改
 
 ### 4.3.1 当前仓库的状况
 
@@ -403,12 +422,12 @@ $ git status
 On branch master
 Changes to be committed:
   (use "git restore --staged <file>..." to unstage)
-        new file:   Sample.c
+        new file:   Sample_Code.c
 
 Changes not staged for commit:
   (use "git add <file>..." to update what will be committed)
   (use "git restore <file>..." to discard changes in working directory)
-        modified:   "Git \344\275\277\347\224\250\346\225\231\347\250\213.md"
+        modified:   "Git_Learning.md"
 ```
 
 如果所有更改已提交、上传，将显示：
@@ -431,8 +450,8 @@ WWC@Surface MINGW64 /c/github/Git-Test (master)
 $ git diff Sample.c
 diff --git a/Sample.c b/Sample.c
 index 51496ea..5a44467 100644
---- a/Sample.c
-+++ b/Sample.c
+--- a/Sample_Code.c
++++ b/Sample_Code.c
 @@ -2,5 +2,6 @@
 
  int main()
@@ -443,7 +462,7 @@ index 51496ea..5a44467 100644
 \ No newline at end of file
 ```
 
-不显示任何消息的情况：
+【注意】不显示任何消息的情况：
 
 + 如果没有更改，或多次更改后最终没有变化（有点像”位移“的概念），将不显示任何消息；
 + 如果该文件没有被Git监控，将不显示任何消息。也就是说必须先将文件添加到仓库中（$ git add命令）；
