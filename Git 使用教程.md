@@ -391,6 +391,24 @@ remote: Kiana_Kaslana: Incorrect username or password (access token)
 
 ### 4.3.1 当前仓库的状况
 
+语法：```$ git status```
+
+命令行将返回当前仓库的情况，包括未提交的信息和未添加的信息：
+
+```bash
+WWC@Surface MINGW64 /c/github/Git-Test (master)
+$ git status
+On branch master
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+        new file:   Sample.c
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        modified:   "Git \344\275\277\347\224\250\346\225\231\347\250\213.md"
+```
+
 
 
 ### 4.3.2 某个文件的具体更改
@@ -416,7 +434,11 @@ index 51496ea..5a44467 100644
 \ No newline at end of file
 ```
 
-如果没有更改，或多次更改后最终没有变化（有点像”位移“的概念），将不返回任何消息。
+不显示任何消息的情况：
+
++ 如果没有更改，或多次更改后最终没有变化（有点像”位移“的概念），将不显示任何消息；
++ 如果该文件没有被Git监控，将不显示任何消息。也就是说必须先将文件添加到仓库中（$ git add命令）；
++ 如果文件名输入不正确（此处大小写敏感），将不显示任何消息。
 
 ### 4.3.3 查看该仓库的所有记录
 
