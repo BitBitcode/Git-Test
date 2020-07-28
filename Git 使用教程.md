@@ -400,7 +400,20 @@ remote: Kiana_Kaslana: Incorrect username or password (access token)
 命令行将显示该文档的改动：
 
 ```bash
+WWC@Surface MINGW64 /c/github/Git-Test (master)
+$ git diff Sample.c
+diff --git a/Sample.c b/Sample.c
+index 51496ea..5a44467 100644
+--- a/Sample.c
++++ b/Sample.c
+@@ -2,5 +2,6 @@
 
+ int main()
+ {
++       printf("Hello World!\n");
+        return 0;
+ }
+\ No newline at end of file
 ```
 
 如果没有更改，或多次更改后最终没有变化（有点像”位移“的概念），将不返回任何消息。
