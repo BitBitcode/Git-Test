@@ -544,6 +544,51 @@ $
 
 ## 4.X 添加标签
 
+注意切换到要打标签的分支
+
+【语法】```$ git tag [标签名称]```
+
+```bash
+$ git tag V1.0.0.20200730_beat
+```
+查看标签
+
+【语法】```$ git tag```
+
+```bash
+WWC@Surface MINGW64 /c/Github/Mystyle (master)
+$ git tag
+V1.0.0.20200730_Beta
+```
+
+删除标签
+
+【语法】```$ git tag -d [标签名称]```
+
+```bash
+WWC@Surface MINGW64 /c/Github/Mystyle (master)
+$ git tag -d V1.0.0.20200730_beat
+Deleted tag 'V1.0.0.20200730_beat' (was 8fbc171)
+```
+
+推送标签
+
+【语法】```$ git push origin [标签名称]```
+
+```bash
+WWC@Surface MINGW64 /c/Github/Mystyle (master)
+$ git push origin V1.0.0.20200730_Beta
+Enumerating objects: 4, done.
+Counting objects: 100% (4/4), done.
+Delta compression using up to 8 threads
+Compressing objects: 100% (3/3), done.
+Writing objects: 100% (3/3), 397 bytes | 397.00 KiB/s, done.
+Total 3 (delta 1), reused 0 (delta 0), pack-reused 0
+remote: Powered by GITEE.COM [GNK-5.0]
+To https://gitee.com/Acrylic-Studio/Mystyle
+ * [new tag]         V1.0.0.20200730_Beta -> V1.0.0.20200730_Beta
+```
+
 
 
 # 第5章 分支管理
@@ -566,9 +611,40 @@ $
 + 只要有合并到 master 分支的操作，都需要和 develop 分支合并下，保证同步；
 + master 和 develop 分支是主要分支，主要分支每种类型只能有一个，派生分支每个类型可以同时存在多个。
 
-## 5.1
+## 5.1 创建分支
 
+创建分支
 
+【语法】```$ git branch [分支名称]```
+
+查看当前所有分支
+
+【语法】```$ git branch```
+
+切换到某个分支
+
+【语法】```$ git checkout [分支名称]```
+
+```bash
+WWC@Surface MINGW64 /c/Github/Mystyle (master)
+$ git branch develop
+
+WWC@Surface MINGW64 /c/Github/Mystyle (master)
+$ git branch
+  develop
+* master
+
+WWC@Surface MINGW64 /c/Github/Mystyle (master)
+$ git checkout develop
+Switched to branch 'develop'
+
+WWC@Surface MINGW64 /c/Github/Mystyle (develop)
+$ git branch
+* develop
+  master
+```
+
+这时我们看到路径后括号内的文字变为“develop”，表明已经切换到了该分支。另外注意到，之前master前面有一个星号（\*），切换后develop前出现星号（\*），即星号表明当前所在的分支。
 
 ## 5.2
 
