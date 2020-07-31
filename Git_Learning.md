@@ -593,6 +593,16 @@ To https://gitee.com/Acrylic-Studio/Mystyle
 
 # 第5章 分支管理
 
+## 5.1 分支与分支模型
+
+### 5.1.1 Git的分支管理
+
+什么是分支
+
+为什么需要分支
+
+### 5.1.2 Git-Flow分支模型
+
 ![](images/Git_Learning/Git Flow.png)
 
 其中：
@@ -611,7 +621,7 @@ To https://gitee.com/Acrylic-Studio/Mystyle
 + 只要有合并到 master 分支的操作，都需要和 develop 分支合并下，保证同步；
 + master 和 develop 分支是主要分支，主要分支每种类型只能有一个，派生分支每个类型可以同时存在多个。
 
-## 5.1 创建分支
+## 5.2 创建与切换分支
 
 创建分支
 
@@ -623,7 +633,17 @@ To https://gitee.com/Acrylic-Studio/Mystyle
 
 切换到某个分支
 
-【语法】```$ git checkout [分支名称]```
+【语法】
+
++ ```$ git checkout [分支名称]```
++ ```$ git switch [分支名称]``` 
+
+还有另一种简便方式，创建并切换到该分支：
+
+【语法】：
+
++ ```$ git checkout -b [分支名称]```
++ ```$ git switch -c [分支名称]```
 
 ```bash
 WWC@Surface MINGW64 /c/Github/Mystyle (master)
@@ -646,7 +666,46 @@ $ git branch
 
 这时我们看到路径后括号内的文字变为“develop”，表明已经切换到了该分支。另外注意到，之前master前面有一个星号（\*），切换后develop前出现星号（\*），即星号表明当前所在的分支。
 
-## 5.2
+## 5.3 合并与删除分支
+
+当一些分支的内容开发完毕后，需要合并到其他分支
+
+首先切换到将要合入的分支：
+
+如果当前分支尚有未提交的更改，系统将发出警告：
+
+```bash
+WWC@Surface MINGW64 /c/Github/Mystyle (feature-carousel)
+$ git checkout develop
+error: Your local changes to the following files would be overwritten by checkout:
+        index.html
+Please commit your changes or stash them before you switch branches.
+Aborting
+```
+
+将某个分支合并到当前分支
+
+【语法】```$ git merge [分支名称]```
+
+```bash
+WWC@Surface MINGW64 /c/Github/Mystyle (develop)
+$ git merge feature-carousel
+Updating 1f410aa..4612f0b
+Fast-forward
+ images/carousel/slide_1.jpg                        | Bin 0 -> 363920 bytes
+ images/carousel/slide_2.jpg                        | Bin 0 -> 268141 bytes
+ images/carousel/slide_3.jpg                        | Bin 0 -> 226495 bytes
+```
+
+删除分支
+
+如果不再需要该分支，可以删除该分支
+
+【语法】```$ git branch -d [分支名称]```
+
+## 5.4 解决冲突
+
+
 
 
 
