@@ -169,7 +169,37 @@ and the repository exists.
 ```bash
 $ ssh-keygen -t rsa -C "smilewwc@qq.com"
 ```
-如果不需要设置密码，则全部回车即可。完成后重复第一步的检查工作；
+（注意命令中的“-C”是大写“C”）
+
+如果不需要设置密码，则全部回车即可：
+
+```bash
+WWC@Surface MINGW64 /c/WINDOWS/system32
+$ ssh-keygen -t rsa -C "smilewwc@qq.com"
+Generating public/private rsa key pair.
+Enter file in which to save the key (/c/Users/WWC/.ssh/id_rsa):
+Created directory '/c/Users/WWC/.ssh'.
+Enter passphrase (empty for no passphrase):
+Enter same passphrase again:
+Your identification has been saved in /c/Users/WWC/.ssh/id_rsa
+Your public key has been saved in /c/Users/WWC/.ssh/id_rsa.pub
+The key fingerprint is:
+SHA256:/+wqiLZ2ffjZzoWIM4Em3uLbPkeIKHrVQrSjB3M3NOU smilewwc@qq.com
+The key's randomart image is:
++---[RSA 3072]----+
+|       ..        |
+|    . o.         |
+|   . o .E        |
+|  o = o.         |
+|   B.=ooS        |
+|. o.=+o .+ . .   |
+|.. ooo.++.o . .  |
+|. ..+o+ =o.* .   |
+| . o+=oo +++B    |
++----[SHA256]-----+
+```
+
+完成后重复第一步的检查工作；
 
 3、在远程代码管理网站添加SSH密钥
 + Github：登陆GitHub，打开“Account settings”，“SSH Keys”页面，然后，点“Add SSH Key”，填上任意Title，在Key文本框里粘贴id_rsa.pub文件的内容；
