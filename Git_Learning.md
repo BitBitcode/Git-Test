@@ -393,6 +393,13 @@ Untracked files:
 #### 3、推送到远程仓库
 【语法】```$ git push [远程服务器名称] [需要提交的分支]```
 对于默认的远程服务器和分支，一般的命令为：```$ git commit origin master```
+
+如果是首次推送到远程仓库，需要加上 ```-u``` 的参数：
+
+```bash
+$ git push -u origin master
+```
+
 【注意】如果你设置了多个远程仓库，应改为：```$ git push [远程仓库名称] master```
 
 ### 4.2.2 提交（commit）命令
