@@ -394,10 +394,30 @@ Untracked files:
 【语法】```$ git push [远程服务器名称] [需要提交的分支]```
 对于默认的远程服务器和分支，一般的命令为：```$ git commit origin master```
 
-如果是首次推送到远程仓库，需要加上 ```-u``` 的参数：
+如果是首次推送到远程仓库，需要加上 ```-u``` 的参数，这样就将本地的“master”分支与远程的“master”分支联系了起来：
 
 ```bash
-$ git push -u origin master
+WWC@Surface MINGW64 /c/Github/Git-Test (master)
+$ git commit -m"update chapter 4.2.1"
+[master 98aa5c6] update chapter 4.2.1
+ 1 file changed, 7 insertions(+)
+
+WWC@Surface MINGW64 /c/Github/Git-Test (master)
+$ git push -u gitee master
+The authenticity of host 'gitee.com (180.97.125.228)' can't be established.
+ECDSA key fingerprint is SHA256:FQGC9Kn/eye1W8icdBgrQp+KkGYoFgbVr17bmjey0Wc.
+Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
+Warning: Permanently added 'gitee.com,180.97.125.228' (ECDSA) to the list of known hosts.
+Enumerating objects: 5, done.
+Counting objects: 100% (5/5), done.
+Delta compression using up to 8 threads
+Compressing objects: 100% (3/3), done.
+Writing objects: 100% (3/3), 431 bytes | 431.00 KiB/s, done.
+Total 3 (delta 2), reused 0 (delta 0), pack-reused 0
+remote: Powered by GITEE.COM [GNK-5.0]
+To gitee.com:Acrylic-Studio/Git-Test.git
+   8d32982..98aa5c6  master -> master
+Branch 'master' set up to track remote branch 'master' from 'gitee'.
 ```
 
 【注意】如果你设置了多个远程仓库，应改为：```$ git push [远程仓库名称] master```
