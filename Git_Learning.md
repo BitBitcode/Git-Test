@@ -271,6 +271,66 @@ $
 
 最常见的操作是将一个仓库同时链接到Github和Gitee
 
+## 3.3.1 多个远程仓库互为备份
+
+这种情况很好理解，就是为了避免各种原因引起的某个远程故障，所以添加另一个远程仓库作为备份。由于是备份，所以需要尽可能减少重复操作，以下办法就可以让你获得便捷的体验。
+
+**1、在仓库目录下查看当前链接的远程仓库**
+
+```bash
+$ git remote -v
+```
+
+命令行显示：
+
+```bash
+origin  https://gitee.com/Acrylic-Studio/Git-Test (fetch)
+origin  https://gitee.com/Acrylic-Studio/Git-Test (push)
+```
+
+这里显示的fetch仓库将成为后续的fetch来源，也就是说，只能同时存在一个fetch仓库
+
+如果还未链接远程仓库，则需先链接一个远程仓库：
+
+```bash 
+$ git remote add origin git@gitee.com:Acrylic-Studio/Git-Test.git
+```
+
+**2、添加另一个远程仓库到当前仓库**
+
+```bash
+$ git remote set-url --add origin git@github.com:Bitbitcode/Git-Test.git
+```
+
+命令行不返回消息。
+
+这时再次查看远程仓库信息：
+
+```bash
+WWC@Surface MINGW64 /c/Github/Git-Test (master)
+$ git remote -v
+origin  git@gitee.com:Acrylic-Studio/Git-Test.git (fetch)
+origin  git@gitee.com:Acrylic-Studio/Git-Test.git (push)
+origin  git@github.com:Bitbitcode/Git-Test.git (push)
+```
+
+发现出现了两个push的仓库。
+
+**3、同时推送至远程仓库**
+
+```bash
+WWC@Surface MINGW64 /c/Github/Git-Test (master)
+$ git push origin master
+Everything up-to-date
+Everything up-to-date
+```
+
+
+
+### 3.3.2 多个远程仓库分别管理
+
+这种情况适用于两个远程仓库并不是互为备份的关系，例如你正在研读某个项目（其中一个远程仓库），但同时又希望自己编写一部分代码再上传到自己的仓库（另一个远程仓库）。
+
 **1、在仓库目录下查看当前链接的远程仓库**
 
 ```bash
@@ -394,7 +454,7 @@ Untracked files:
 【语法】```$ git push [远程服务器名称] [需要提交的分支]```
 对于默认的远程服务器和分支，一般的命令为：```$ git commit origin master```
 
-如果是首次推送到远程仓库，需要加上 ```-u``` 的参数，这样就将本地的“master”分支与远程的“master”分支联系了起来：
+如果是首次推送到远程仓库，需要加上 ```-u``` 的参数，这样就将本地的“master”分支与远程的“master”分支联系了起来。如果不加上该参数，仍然可以推送，但必须注明需要提交的分支，也就是说，这时系统不知道你要将本地的“master”提交到远程的哪个分支，因为没有关联，所以系统认为本地“master”不一定是远程“master”分支，故需要你加上将要提交的分支以明确该问题。
 
 ```bash
 WWC@Surface MINGW64 /c/Github/Git-Test (master)
